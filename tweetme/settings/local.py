@@ -14,7 +14,6 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-print('BAR'+BASE_DIR+'\n')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -54,7 +53,7 @@ ROOT_URLCONF = 'tweetme.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(BASE_DIR), 'templates')],
+        'DIRS': [os.path.join(os.path.dirname(BASE_DIR), "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +66,8 @@ TEMPLATES = [
     },
 ]
 
+print(TEMPLATES[0].get('DIRS'))
+
 WSGI_APPLICATION = 'tweetme.wsgi.application'
 
 
@@ -76,9 +77,12 @@ WSGI_APPLICATION = 'tweetme.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db.sqlite3'),
     }
 }
+
+
+
 
 
 # Password validation
@@ -123,6 +127,9 @@ STATICFILES_DIRS = [
     #long term storage
     os.path.join(os.path.dirname(BASE_DIR), 'static-storage'),
 ]
+print(STATICFILES_DIRS[0])
+
 
 #will be served
 STATIC_ROOT=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(BASE_DIR))), 'static-serve')
+print(STATIC_ROOT)
